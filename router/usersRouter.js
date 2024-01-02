@@ -5,11 +5,20 @@ const {
 } = require("../controller/usersController");
 const decorateHtml = require("../middlewares/common/decorateHtml");
 const photoUpload = require("../middlewares/userPhotoUpload/photoUpload");
-const addUserValidator = require("../validators/usersValidator");
+const {
+  addUserValidator,
+  addUserValidationHandler,
+} = require("../validators/usersValidator");
 
 const usersRouter = express.Router();
 
 usersRouter.get("/", decorateHtml("Users"), usersController);
-usersRouter.post("/add", photoUpload, addUserValidator, addUsersController);
+usersRouter.post(
+  "/add",
+  photoUpload,
+  addUserValidator,
+  addUserValidationHandler,
+  addUsersController
+);
 
 module.exports = usersRouter;

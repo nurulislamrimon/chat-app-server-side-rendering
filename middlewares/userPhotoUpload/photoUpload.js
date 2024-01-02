@@ -2,7 +2,7 @@ const uploader = require("../../utilities/singleUploader");
 
 const photoUpload = (req, res, next) => {
   const upload = uploader(
-    "photo",
+    "user",
     ["image/jpeg", "image/jpg", "image/png"],
     1000000,
     "Only .jpg, .jpeg or .png format allowed!"

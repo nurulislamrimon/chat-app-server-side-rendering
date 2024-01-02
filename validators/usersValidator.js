@@ -1,6 +1,8 @@
-const { check } = require("express-validator");
+const { check, validationResult } = require("express-validator");
 const User = require("../schemas/userSchema");
 const createHttpError = require("http-errors");
+const { unlink } = require("fs");
+const path = require("path");
 
 const addUserValidator = [
   check("name")
@@ -28,4 +30,20 @@ const addUserValidator = [
     .withMessage("Mobile number must be Bangladeshi mobile number!"),
   check("password").isStrongPassword().withMessage("Password must be strong!"),
 ];
-module.exports = addUserValidator;
+
+const addUserValidationHandler = (req, res, next) => {
+  const errors = validationResult(req);
+  const mappedErrors = errors.mapped();
+  if (Object.keys(mappedErrors).length === 0) {
+    next();
+  } else {
+    if (req.files.length > 0) {
+      const { fileName } = req.files[0];
+      unlink(
+        path.join(__dirname, `/../public/uploads/user/${fileName}`),
+        (err) => err && console.log(err)
+      );
+    }
+  }
+};
+module.exports = { addUserValidator, addUserValidationHandler };
