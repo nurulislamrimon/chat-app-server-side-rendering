@@ -1,7 +1,7 @@
-const logingController = (req, res, next) => {
+const loginController = (req, res, next) => {
   res.render("index", {
-    title: "Login - Chat Application",
+    title: res.locals.title,
   });
 };
 
-module.exports = { logingController };
+module.exports = { loginController };

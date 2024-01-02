@@ -1,7 +1,6 @@
 const createHttpError = require("http-errors");
 
 const notFoundHandler = (req, res, next) => {
-  res.locals.html = true;
   next(createHttpError(404, "Your requested content was not found!"));
 };
 
