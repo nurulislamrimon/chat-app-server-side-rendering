@@ -8,7 +8,7 @@ const uploader = (
   max_file_size,
   error_message
 ) => {
-  const upload_folder = `$${__dirname}/../public/uploads/${subfolder_path}`;
+  const upload_folder = `${__dirname}/../public/uploads/${subfolder_path}`;
 
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
