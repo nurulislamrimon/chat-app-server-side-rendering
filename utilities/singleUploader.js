@@ -2,7 +2,7 @@ const createHttpError = require("http-errors");
 const multer = require("multer");
 const path = require("path");
 
-const singleUploader = (
+const uploader = (
   subfolder_path,
   allowed_file_types,
   max_file_size,
@@ -45,4 +45,4 @@ const singleUploader = (
   return upload;
 };
 
-module.exports = singleUploader;
+module.exports = uploader;

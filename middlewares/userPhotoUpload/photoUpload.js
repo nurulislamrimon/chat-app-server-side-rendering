@@ -1,3 +1,5 @@
+const uploader = require("../../utilities/singleUploader");
+
 const photoUpload = (req, res, next) => {
   const upload = uploader(
     "photo",
