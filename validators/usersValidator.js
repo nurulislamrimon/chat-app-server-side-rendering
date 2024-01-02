@@ -37,13 +37,13 @@ const addUserValidationHandler = (req, res, next) => {
     next();
   } else {
     if (req.files.length > 0) {
-      const { fileName } = req.files[0];
-      console.log(fileName);
+      const { filename } = req.files[0];
       unlink(
-        path.join(__dirname, `/../public/uploads/user/${fileName}`),
+        path.join(__dirname, `/../public/uploads/user/${filename}`),
         (err) => err && console.log(err)
       );
     }
+    res.status(500).send(mappedErrors);
   }
 };
 module.exports = { addUserValidator, addUserValidationHandler };
