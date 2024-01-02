@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+<style>
+    *{
+        margin: 0 ;
+        padding: 0 ;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100dvh;
+        width: 100dvw;
+        display: flex;
+        flex-direction: column;
+    }
+      h1 {
+        text-align: center;
+      }
+      form {
+        width: 350px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+      }
+      form :is(input, button) {
+        padding: 3px 2px;
+        font-size: large;
+        border-radius: 10px;
+      }
+      footer{
+        text-align: center;
+        margin: auto 0 0 0;
+      }
+</style>
+   <link rel="stylesheet" href="/stylesheets/common.css">
+  </head>
+  <body>

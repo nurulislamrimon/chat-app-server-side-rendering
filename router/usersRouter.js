@@ -4,6 +4,6 @@ const decorateHtml = require("../middlewares/common/decorateHtml");
 
 const usersRouter = express.Router();
 
-usersRouter.get("/", decorateHtml("Users - Chat Application"), usersController);
+usersRouter.get("/", decorateHtml("Users"), usersController);
 
 module.exports = usersRouter;

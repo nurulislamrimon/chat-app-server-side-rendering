@@ -4,6 +4,6 @@ const decorateHtml = require("../middlewares/common/decorateHtml");
 
 const inboxRouter = express.Router();
 
-inboxRouter.get("/", decorateHtml("Inbox - Chat Application"), inboxController);
+inboxRouter.get("/", decorateHtml("Inbox"), inboxController);
 
 module.exports = inboxRouter;
