@@ -8,7 +8,6 @@ const addUserValidator = [
   check("name")
     .isLength({ min: 3 })
     .withMessage("Name is required!")
-    .isAlpha("en-US", { ignore: "-" })
     .withMessage("Name must not contain other than alphabet")
     .trim(),
   check("email")
@@ -39,6 +38,7 @@ const addUserValidationHandler = (req, res, next) => {
   } else {
     if (req.files.length > 0) {
       const { fileName } = req.files[0];
+      console.log(fileName);
       unlink(
         path.join(__dirname, `/../public/uploads/user/${fileName}`),
         (err) => err && console.log(err)
