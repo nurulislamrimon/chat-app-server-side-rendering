@@ -1,8 +1,10 @@
 const User = require("../schemas/userSchema");
 
-const usersController = (req, res, next) => {
+const usersController = async (req, res, next) => {
+  const users = await User.find({});
   res.render("users", {
     title: res.locals.title,
+    users,
   });
 };
 const addUsersController = async (req, res, next) => {

@@ -1,7 +1,12 @@
 <%- include('./partials/headers'); %>
-
+<% users.forEach(user=>{%>
+  <div>
+    <h1>Logged Users</h1>
+    <li style="list-style: none; display: flex; align-items: center; gap: 10px;margin-left: 20px;"> <img src="./uploads/user/<%=user.photo%>" alt="<% user.name %>" height="30" width="30" style="border-radius: 50%;"><%= user.email %></li>
+  </div>
+  <% }) %>
     <form action="http://localhost:5000/users/add" method="post" enctype="multipart/form-data" >
-      <h1>Login</h1>
+      <h1>Add New User</h1>
       <label for="name">Name</label>
       <input type="text" id="name" name="name" />
       <br />
