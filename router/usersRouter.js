@@ -2,6 +2,7 @@ const express = require("express");
 const {
   usersController,
   addUsersController,
+  deleteUsersController,
 } = require("../controller/usersController");
 const decorateHtml = require("../middlewares/common/decorateHtml");
 const photoUpload = require("../middlewares/userPhotoUpload/photoUpload");
@@ -20,5 +21,6 @@ usersRouter.post(
   addUserValidationHandler,
   addUsersController
 );
+usersRouter.delete("/:userId", deleteUsersController);
 
 module.exports = usersRouter;

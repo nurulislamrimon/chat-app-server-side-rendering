@@ -2,8 +2,13 @@
 <% users.forEach(user=>{%>
   <div>
     <h1>Logged Users</h1>
-    <li style="list-style: none; display: flex; align-items: center; gap: 10px;margin-left: 20px;"> <img src="./uploads/user/<%=user.photo%>" alt="<% user.name %>" height="30" width="30" style="border-radius: 50%;"><%= user.email %></li>
+    <li style="list-style: none; display: flex; align-items: center; gap: 50px;margin-left: 20px;"> 
+      <div style="display: flex; gap: 10px;align-items: center;"><img src="./uploads/user/<%=user.photo%>" alt="<% user.name %>" height="30" width="30" style="border-radius: 50%;"><%= user.name %>
+      </div> <%= user.email %>
+      <button style="color: red;" onclick="handleDeleteUser('<%= user._id %>')">Delete</button>
+    </li>
   </div>
+
   <% }) %>
     <form action="http://localhost:5000/users/add" method="post" enctype="multipart/form-data" >
       <h1>Add New User</h1>
@@ -24,4 +29,12 @@
       <br />
       <button>Submit</button>
     </form>
+    <script>
+      const handleDeleteUser=(id)=>{
+        // fetch(`${process.env.NODE_ENV}`)
+        fetch(`/users/${id}`,{
+          method:"delete"
+        }).then(res=>res.json()).then(data=>console.log(data))
+      }
+    </script>
     <%- include('./partials/footer'); %>
