@@ -10,10 +10,17 @@ const {
   addUserValidator,
   addUserValidationHandler,
 } = require("../validators/usersValidator");
+const verifyAuthentication = require("../middlewares/common/checkAuthentication");
 
 const usersRouter = express.Router();
 
-usersRouter.get("/", decorateHtml("Users"), usersController);
+usersRouter.get(
+  "/",
+  decorateHtml("Users"),
+  verifyAuthentication,
+  usersController
+);
+
 usersRouter.post(
   "/add",
   photoUpload,

@@ -1,12 +1,16 @@
 <%- include('./partials/headers'); %>
-    <form action="">
-      <h1 class="inbox-title">Login</h1>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" />
-      <br />
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" />
-      <br />
-      <button>Submit</button>
-    </form>
+<div style="display: grid; grid-template-columns: 200px auto;">
+<ul style="border-right: 1px solid black;padding: 0 10px;">
+  <% users.forEach(user=>{%>
+    <li style="display: flex; align-items: center;gap: 10px;margin-top: 10px;cursor: pointer;"><img src="./uploads/user/<%=user.photo%>" alt="<%=user.name%>" height="30" width="30"><%= user.name %></li>
+    <% }) %>
+</ul>
+<section style="height: calc(100dvh - 70px); padding: 5px;">
+
+  <form action="" style="margin: auto 0 0 0;">
+      <input type="text" id="text" name="text"  style="border-radius: 10px; font-size: large;padding: 3px 5px;" autofocus/>
+      <button style="border-radius: 10px; font-size: large;padding: 3px 5px; cursor: pointer;">Send</button>
+  </form>
+</section>
+  </div>    
   <%- include('./partials/footer'); %>

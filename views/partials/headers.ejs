@@ -24,28 +24,33 @@
     nav li{
         list-style: none;
     }
-    nav a{
+    nav :is(a,button){
         text-decoration: none;
         padding: 10px 30px;
         font-size: large;
         font-weight: bold;
+        border: none;
+        background-color: transparent;
+        display: inline-block;
+        cursor: pointer;
+        color: darkblue;
     }
     nav li:not(:last-child)::after{
         content: "|";
     }
-    nav a:hover{
+    nav :is(a,button):hover{
         color: gold;
     }
       h1 {
         text-align: center;
       }
-      form {
+      :is(form.login-form ,form.new-user-form) {
         width: 350px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
       }
-      form :is(input, button) {
+      :is(form.login-form ,form.new-user-form) :is(input, button) {
         padding: 3px 2px;
         font-size: large;
         border-radius: 10px;
@@ -62,5 +67,24 @@
             <li><a href="/">Home</a></li>
             <li><a href="/inbox">Inbox</a></li>
             <li><a href="/users">User</a></li>
-        </nav>
+
+
+<% if(!!(loggedInUser&&loggedInUser.email)){ %>
+
+  <li><button onclick="handleLogout()">Log out</button></li>
+  
+  <% }else{ %>
+    
+    <li><a href="/login">Login</a></li>
+
+<% } %>
+
+          </nav>
     </header>
+<script>
+  const handleLogout=()=>{
+    fetch('/logout',{
+      method:"DELETE"
+    }).then((res)=>res.json()).then(data=>console.log(data))
+  }
+</script>
